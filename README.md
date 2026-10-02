@@ -4,6 +4,10 @@
 
 DPR Insight AI is an end-to-end document intelligence application that combines **PDF processing, OCR, machine learning, explainable AI, vector search, and generative AI** to simplify the analysis of Detailed Project Reports.
 
+## 🖥️ Application Preview
+
+![DPR Insight AI Dashboard](docs/Images/dashboard.png)
+
 The system allows users to upload a DPR, automatically extract and organize its contents, generate a project risk assessment, understand the factors contributing to the score, and ask natural-language questions about the uploaded document.
 
 ---
