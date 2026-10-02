@@ -1,113 +1,59 @@
 # DPR Insight AI
 
-### AI-Powered Detailed Project Report Analysis & Risk Intelligence
+> AI-powered platform for automated analysis, risk assessment, explainable predictions, and conversational question answering over Detailed Project Reports (DPRs).
 
-DPR Insight AI is an end-to-end AI application that analyzes Detailed Project Reports (DPRs), extracts structured project information, predicts project risk, explains model decisions using SHAP, and provides a Retrieval-Augmented Generation (RAG) assistant for document-grounded question answering.
+DPR Insight AI is an end-to-end document intelligence application that combines **PDF processing, OCR, machine learning, explainable AI, vector search, and generative AI** to simplify the analysis of Detailed Project Reports.
 
----
-
-## 🚀 Overview
-
-Detailed Project Reports contain large amounts of financial, technical, timeline, and project-scope information.
-
-DPR Insight AI automates the analysis process by combining:
-
-- Document processing
-- OCR
-- Machine Learning
-- Risk prediction
-- SHAP explainability
-- Semantic search
-- Vector databases
-- Retrieval-Augmented Generation
-- Large Language Models
-
-The goal is to transform unstructured DPR documents into actionable project insights.
+The system allows users to upload a DPR, automatically extract and organize its contents, generate a project risk assessment, understand the factors contributing to the score, and ask natural-language questions about the uploaded document.
 
 ---
 
-## ✨ Key Features
+## 🚀 Key Features
 
-### 📄 Intelligent Document Processing
+### 📄 Intelligent PDF Processing
+- Upload DPR documents through the web interface.
+- Extract text and document structure using PyMuPDF.
+- Detect pages with insufficient native text.
+- Automatically use Tesseract OCR for scanned/image-based pages.
+- Preserve page-level information for traceable answers.
 
-- PDF document ingestion
-- Structured section extraction
-- OCR fallback for scanned documents
-- Financial, timeline, scope and technical information extraction
+### 📊 Risk Prediction
+- Extract structured features from DPR documents.
+- Predict project risk using a **Random Forest classifier**.
+- Generate a risk score and risk-level distribution.
+- Display the factors contributing to the prediction.
 
-### 📊 ML-Based Risk Prediction
+### 🔍 Explainable AI
+- Uses **SHAP** to explain the Random Forest prediction.
+- Shows which document characteristics contribute to increasing or decreasing the risk score.
+- Helps users understand the model output instead of treating it as a black-box prediction.
 
-- Feature extraction from DPR documents
-- Random Forest risk model
-- Project risk scoring
-- SHAP-based explainability
-- Feature-level contribution analysis
+### 🤖 RAG-Based Document Assistant
+Users can ask questions directly about an uploaded DPR.
 
-### 🤖 RAG-Based AI Assistant
+Example questions:
 
-- Document chunking
-- Semantic embeddings
-- FAISS vector search
-- Context retrieval
-- Gemini-powered question answering
-- Document-grounded responses
+- What are the financial parameters mentioned in this DPR?
+- What is the proposed project?
+- What is the project timeline?
+- What are the major risks mentioned?
+- What is the total project cost?
+- What are the sources of finance?
+- Summarize the project objectives.
 
-### 📈 Interactive Dashboard
+The RAG pipeline:
 
-- Project overview
-- Risk indicators
-- Extracted information
-- AI-generated insights
-- Interactive charts
-
-### ⚡ FastAPI Backend
-
-- REST APIs
-- Document upload
-- Risk prediction
-- RAG chat
-- Asynchronous processing
-
----
-
-# 🏗️ System Architecture
-
-                    ┌───────────────────────────┐
-                    │       DPR PDF Upload      │
-                    └─────────────┬─────────────┘
-                                  │
-                                  ▼
-                    ┌───────────────────────────┐
-                    │    Document Ingestion     │
-                    │      PDF + OCR Fallback   │
-                    └─────────────┬─────────────┘
-                                  │
-                    ┌─────────────┴─────────────┐
-                    │                           │
-                    ▼                           ▼
-        ┌─────────────────────┐     ┌─────────────────────┐
-        │     Risk Model      │     │      RAG Engine     │
-        ├─────────────────────┤     ├─────────────────────┤
-        │ Feature Extraction  │     │ Text Chunking       │
-        │ Random Forest       │     │ Embeddings          │
-        │ SHAP Explainability │     │ FAISS Vector Store  │
-        └──────────┬──────────┘     └──────────┬──────────┘
-                   │                           │
-                   ▼                           ▼
-        ┌─────────────────────┐     ┌─────────────────────┐
-        │   Risk Prediction   │     │    Gemini LLM       │
-        │ + SHAP Explanation  │     │ Context-Aware RAG   │
-        └──────────┬──────────┘     └──────────┬──────────┘
-                   │                           │
-                   └─────────────┬─────────────┘
-                                 ▼
-                    ┌───────────────────────────┐
-                    │       FastAPI Backend      │
-                    │  Upload │ Risk │ Chat API │
-                    └─────────────┬─────────────┘
-                                  │
-                                  ▼
-                    ┌───────────────────────────┐
-                    │    React + Tailwind UI    │
-                    │ Dashboard │ Risk │ Chat   │
-                    └───────────────────────────┘
+```text
+User Question
+      ↓
+Question Embedding
+      ↓
+FAISS Similarity Search
+      ↓
+Relevant DPR Chunks
+      ↓
+Context Construction
+      ↓
+Gemini LLM
+      ↓
+Grounded Answer + Sources
