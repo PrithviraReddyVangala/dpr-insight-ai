@@ -1,0 +1,16 @@
+pymupdf>=1.24
+pdf2image>=1.17
+pytesseract>=0.3.10
+Pillow>=10.0
+scikit-learn>=1.5
+imbalanced-learn>=0.12
+shap>=0.45
+xgboost>=2.0
+joblib>=1.4
+pandas>=2.2
+sentence-transformers>=3.0
+faiss-cpu>=1.8
+google-genai>=0.3
+fastapi>=0.110
+uvicorn[standard]>=0.30
+python-multipart>=0.0.9

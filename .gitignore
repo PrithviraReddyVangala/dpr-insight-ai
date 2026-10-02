@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# Environment variables
+.env
+.env.*
+
+# Keep example environment file
+!.env.example
+
+# Node.js
+node_modules/
+frontend/dist/
+
+# Build files
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
+temp/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Generated RAG/vector files
+backend/storage/
+backend/rag/index/
+backend/rag/vector_store/
